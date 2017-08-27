@@ -1,0 +1,12 @@
+php_value display_errors 1
+
+Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine on
+
+RewriteRule /css/([^\/]+).css$ /web/css/$1.css [L]
+
+# Если запрос не начинается с web, добавляем его
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule (.*) /web/$1
